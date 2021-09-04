@@ -14,7 +14,8 @@ class CarsController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Cars::all();
+        return view('cars.listAllCars', ['cars' => $cars]);
     }
 
     /**
@@ -24,7 +25,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        //
+        return view('cars.addCars');
     }
 
     /**
@@ -35,7 +36,15 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $car = new Cars();
+        $car->brand = $request->txtMarca;
+        $car->model = $request->txtModelo;
+        $car->board = $request->txtPlaca;
+        $car->year = $request->txtAno;
+        $car->save();
+
+        return redirect()->route('car.index');
+
     }
 
     /**
@@ -44,9 +53,9 @@ class CarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function show(Cars $cars)
+    public function show(Cars $car)
     {
-        //
+        return view('cars.viewCar', ['car' => $car]);
     }
 
     /**
@@ -55,9 +64,9 @@ class CarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cars $cars)
+    public function edit(Cars $car)
     {
-        //
+        return view('cars.editCar', ['car' => $car]);
     }
 
     /**
@@ -67,9 +76,16 @@ class CarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cars $cars)
+    public function update(Request $request, Cars $car)
     {
-        //
+        $car->brand = $request->txtMarca;
+        $car->model = $request->txtModelo;
+        $car->board = $request->txtPlaca;
+        $car->year = $request->txtAno;
+        $car->save();
+
+        return redirect()->route('car.index');
+
     }
 
     /**
@@ -78,8 +94,9 @@ class CarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cars $cars)
+    public function destroy(Cars $car)
     {
-        //
+        $car->delete();
+        return redirect()->route('car.index');
     }
 }
