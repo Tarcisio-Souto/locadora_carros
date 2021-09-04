@@ -20,8 +20,6 @@ class CreateCarsTable extends Migration
             $table->string('model');
             $table->string('year');
             $table->string('board');
-            $table->unsignedBigInteger('fk_user');
-            $table->foreign('fk_user')->references('id')->on('users');
         });
     }
 

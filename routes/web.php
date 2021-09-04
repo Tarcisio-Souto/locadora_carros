@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::get('/', function () {
 
 
 Route::resource('usuarios', UserController::class)->names('user')->parameters(['usuarios' => 'user']);
+Route::resource('carros', CarsController::class)->names('car')->parameters(['carros' => 'car']);
