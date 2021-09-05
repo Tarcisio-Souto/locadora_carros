@@ -3,83 +3,82 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rents;
+use App\Models\User;
+use App\Models\Cars;
 use Illuminate\Http\Request;
 
 class RentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+
+        // Listando todas as locações:
+
+        $rents = Rents::with(['carro', 'usuario'])->get();
+        return view('rents.listAllRents', compact('rents'));
+
+
+        //return view('rents.seachUser', compact('rents'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function searchUser(Request $request) {
+
+        $findUser = User::where('id', '=' ,$request->txtIdUsuario)->first();
+        return redirect()->route('rent.create', ['user' => $findUser]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function create(User $user) {
+
+        $cars = Cars::all();
+        return view('rents.addRent', ['user' => $user, 'cars' => $cars]);
+
+    }
+
     public function store(Request $request)
     {
-        //
+        $rent = new Rents();
+        $rent->fk_user = $request->txtIdUsuario;
+        $rent->fk_car = $request->txtCarro;
+        $rent->price = $request->txtPreco;
+        $rent->dt_devolution = $request->txtDataDevolucao;
+        $rent->save();
+
+        return redirect()->route('rent.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Rents  $rents
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rents $rents)
+    public function show(Rents $rent)
     {
-        //
+        $rent = Rents::with(['carro', 'usuario'])->find($rent->id);
+        return view('rents.viewRent', ['rent' => $rent]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Rents  $rents
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Rents $rents)
+    public function edit(Rents $rent)
     {
-        //
+        $rent = Rents::with(['carro', 'usuario'])->find($rent->id);
+        $cars = Cars::all();
+        return view('rents.editRent', ['rent' => $rent, 'cars' => $cars]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rents  $rents
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Rents $rents)
+    public function update(Request $request, Rents $rent)
     {
-        //
+
+        $rent->fk_user = $request->txtLocatario;
+        $rent->fk_car = $request->txtCarro;
+        $rent->price = $request->txtPreco;
+        $rent->dt_devolution = $request->txtDataDevolucao;
+        $rent->save();
+
+        return redirect()->route('rent.index');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Rents  $rents
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Rents $rents)
+    public function destroy(Rents $rent)
     {
-        //
+        $rent->delete();
+        return redirect()->route('rent.index');
     }
 }
