@@ -23,8 +23,10 @@ Route::get('/', function () {
 
 
 Route::resource('usuarios', UserController::class)->names('user')->parameters(['usuarios' => 'user']);
+
 Route::resource('carros', CarsController::class)->names('car')->parameters(['carros' => 'car']);
-//Route::resource('locacoes', RentsController::class)->names('rent')->parameters(['locacoes' => 'rent']);
+Route::get('locacoes/disponiveis', [CarsController::class, 'cars_available'])->name('car.cars_available');
+//Route::get('/carros/locados', [CarsController::class, 'cars_rents'])->name('car.cars_rents');
 
 
 /* Rents */
@@ -41,6 +43,14 @@ Route::post('/locacoes/pesquisar-usuario', [RentsController::class, 'searchUser'
 
 Route::post('/locacoes/registrar', [RentsController::class, 'store'])->name('rent.store');
 
+Route::post('/locacoes/carro-usuario/{car}', [RentsController::class, 'carUserRent'])->name('rent.carUserRent');
+
+Route::post('/locacoes/pesquisar-usuario/{car}', [RentsController::class, 'searchUserSelectedCar'])->name('rent.searchUserSelectedCar');
+
+Route::get('/locacoes/novo/{user}/{car}', [RentsController::class, 'createRentSelectedUserCar'])->name('rent.createRentSelectedUserCar');
+
 Route::put('/locacoes/update/{rent}', [RentsController::class, 'update'])->name('rent.update');
 
 Route::delete('/locacoes/deletar/{rent}', [RentsController::class, 'destroy'])->name('rent.destroy');
+
+
