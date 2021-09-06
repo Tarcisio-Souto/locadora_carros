@@ -99,4 +99,15 @@ class CarsController extends Controller
         $car->delete();
         return redirect()->route('car.index');
     }
+
+
+    public function cars_available() {
+
+        $cars = Cars::where('status', '=', '0')->get();
+        return view('cars.cars_available', compact('cars'));
+
+
+    }
+
+
 }

@@ -32,7 +32,7 @@ class RentsController extends Controller
 
     public function create(User $user) {
 
-        $cars = Cars::all();
+        $cars = Cars::where('status', '=', '0')->get();
         return view('rents.addRent', ['user' => $user, 'cars' => $cars]);
 
     }
@@ -45,6 +45,9 @@ class RentsController extends Controller
         $rent->price = $request->txtPreco;
         $rent->dt_devolution = $request->txtDataDevolucao;
         $rent->save();
+
+        /* Adicionando o status "1" ao carro, indicando indisponibilidade */
+        Cars::where('id', '=', $request->txtCarro)->update(['status' => 1]);
 
         return redirect()->route('rent.index');
 
@@ -81,4 +84,24 @@ class RentsController extends Controller
         $rent->delete();
         return redirect()->route('rent.index');
     }
+
+    public function carUserRent(Cars $car) {
+
+        return view('rents.addRentSelectUser', compact('car'));
+
+    }
+
+    public function searchUserSelectedCar(Request $request, Cars $car) {
+
+        $findUser = User::where('id', '=' ,$request->txtIdUsuario)->first();
+        return redirect()->route('rent.createRentSelectedUserCar', ['user' => $findUser, 'car' => $car]);
+
+    }
+
+    public function createRentSelectedUserCar(User $user, Cars $car) {
+
+        return view('rents.addRentSelectedUserCar', ['user' => $user, 'car' => $car]);
+
+    }
+
 }

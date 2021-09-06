@@ -8,12 +8,19 @@
 </head>
 <body>
 
-    <h1>Cadastrar Carro</h1><br><br>
+    <h1>Cadastrar Carro</h1><br>
 
     <form action="{{ route('car.create') }}" method="GET">
         <input type="submit" value="Novo">
     </form>
-    <br><br><br>
+    <br><hr><br>
+
+    <h1>Buscar Carros Disponíveis</h1>
+    <form action="{{ route('car.cars_available') }}" method="get">
+        <input type="submit" value="Pesquisar">
+    </form>
+    <br><hr><br><br>
+
 
     <h1>Lista de carros</h1><br><br>
 
