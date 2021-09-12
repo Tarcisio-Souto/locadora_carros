@@ -22,35 +22,44 @@ Route::get('/', function () {
 });
 
 
-Route::resource('usuarios', UserController::class)->names('user')->parameters(['usuarios' => 'user']);
+Route::middleware(['auth'])->group(function () {
 
-Route::resource('carros', CarsController::class)->names('car')->parameters(['carros' => 'car']);
-Route::get('locacoes/disponiveis', [CarsController::class, 'cars_available'])->name('car.cars_available');
-//Route::get('/carros/locados', [CarsController::class, 'cars_rents'])->name('car.cars_rents');
+    Route::resource('usuarios', UserController::class)->names('user')->parameters(['usuarios' => 'user']);
+
+    Route::resource('carros', CarsController::class)->names('car')->parameters(['carros' => 'car']);
+    Route::get('locacoes/disponiveis', [CarsController::class, 'cars_available'])->name('car.cars_available');
+    //Route::get('/carros/locados', [CarsController::class, 'cars_rents'])->name('car.cars_rents');
 
 
-/* Rents */
+    /* Rents */
 
-Route::get('/locacoes', [RentsController::class, 'index'])->name('rent.index');
+    Route::get('/locacoes', [RentsController::class, 'index'])->name('rent.index');
 
-Route::get('/locacoes/visualizar-locacao/{rent}', [RentsController::class, 'show'])->name('rent.show');
+    Route::get('/locacoes/visualizar-locacao/{rent}', [RentsController::class, 'show'])->name('rent.show');
 
-Route::get('/locacoes/novo/{user}', [RentsController::class, 'create'])->name('rent.create');
+    Route::get('/locacoes/novo/{user}', [RentsController::class, 'create'])->name('rent.create');
 
-Route::get('/locacoes/editar/{rent}', [RentsController::class, 'edit'])->name('rent.edit');
+    Route::get('/locacoes/editar/{rent}', [RentsController::class, 'edit'])->name('rent.edit');
 
-Route::post('/locacoes/pesquisar-usuario', [RentsController::class, 'searchUser'])->name('rent.searchUser');
+    Route::post('/locacoes/pesquisar-usuario', [RentsController::class, 'searchUser'])->name('rent.searchUser');
 
-Route::post('/locacoes/registrar', [RentsController::class, 'store'])->name('rent.store');
+    Route::post('/locacoes/registrar', [RentsController::class, 'store'])->name('rent.store');
 
-Route::post('/locacoes/carro-usuario/{car}', [RentsController::class, 'carUserRent'])->name('rent.carUserRent');
+    Route::post('/locacoes/carro-usuario/{car}', [RentsController::class, 'carUserRent'])->name('rent.carUserRent');
 
-Route::post('/locacoes/pesquisar-usuario/{car}', [RentsController::class, 'searchUserSelectedCar'])->name('rent.searchUserSelectedCar');
+    Route::post('/locacoes/pesquisar-usuario/{car}', [RentsController::class, 'searchUserSelectedCar'])->name('rent.searchUserSelectedCar');
 
-Route::get('/locacoes/novo/{user}/{car}', [RentsController::class, 'createRentSelectedUserCar'])->name('rent.createRentSelectedUserCar');
+    Route::get('/locacoes/novo/{user}/{car}', [RentsController::class, 'createRentSelectedUserCar'])->name('rent.createRentSelectedUserCar');
 
-Route::put('/locacoes/update/{rent}', [RentsController::class, 'update'])->name('rent.update');
+    Route::put('/locacoes/update/{rent}', [RentsController::class, 'update'])->name('rent.update');
 
-Route::delete('/locacoes/deletar/{rent}', [RentsController::class, 'destroy'])->name('rent.destroy');
+    Route::delete('/locacoes/deletar/{rent}', [RentsController::class, 'destroy'])->name('rent.destroy');
 
+
+    Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
+
+
+});
+
+Auth::routes();
 
