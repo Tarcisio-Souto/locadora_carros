@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -28,7 +28,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('carros', CarsController::class)->names('car')->parameters(['carros' => 'car']);
     Route::get('locacoes/disponiveis', [CarsController::class, 'cars_available'])->name('car.cars_available');
-    //Route::get('/carros/locados', [CarsController::class, 'cars_rents'])->name('car.cars_rents');
 
 
     /* Rents */
