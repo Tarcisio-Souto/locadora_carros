@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Todos os Carros</title>
-</head>
-<body>
+@extends('layouts.app')
 
+@section('content')
+<div>
     <h1>Cadastrar Carro</h1><br>
 
     <form action="{{ route('car.create') }}" method="GET">
@@ -40,5 +34,5 @@
         <hr><br>
     @endforeach
 
-</body>
-</html>
+</div>
+@endsection
