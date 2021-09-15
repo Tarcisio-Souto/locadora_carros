@@ -1,14 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Todos os Usuários</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Lista de usuários</h1><br><br>
+@section('content')
+
+<div class="container conteudo">
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Pesquisar Usuário</p>
+            <form action="{{ route('user.viewUser') }}" method="GET">
+                <label>Digite o ID do usuário: <input type="text" name="txtUsuario"> </label><br><br>
+                <input type="submit" value="Pesquisar"><br><br>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <h1>Lista de usuários</h1>
 
     <form action="{{ route('user.create') }}" method="GET">
         <input type="submit" value="Novo">
@@ -28,6 +37,6 @@
         </form>
         <hr><br>
     @endforeach
+</div>
 
-</body>
-</html>
+@endsection
