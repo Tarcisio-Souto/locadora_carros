@@ -19,24 +19,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
-
-
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
-
+    <script src="https://kit.fontawesome.com/3d7779fa7f.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
+    <div class="overlay"></div>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm menu-sup">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand logo-menu" href="{{ url('/inicio') }}">
                     {{ config('app.name', 'Locadora') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -72,9 +64,8 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -90,49 +81,59 @@
                 </div>
             </div>
         </nav>
+        <button class="openbtn" onclick="openNav()">☰</button>
+        <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="#"><i class="fas fa-home"></i>Início</a>
+            <a href="#usuarioSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Usuários</a>
+            <ul class="collapse list-unstyled" id="usuarioSubMenu">
+                <li>
+                    <a href="{{ route('user.create') }}"><i class="fas fa-user-plus"></i>Cadastrar</a>
+                </li>
+                <li>
+                    <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
+                </li>
+            </ul>
+            <a href="#carroSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Carros</a>
+            <ul class="collapse list-unstyled" id="carroSubMenu">
+                <li>
+                    <a id="" href=""><i class="fas fa-user-plus"></i>Cadastrar</a>
+                </li>
+                <li>
+                    <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
+                </li>
+            </ul>
+            <a href="#locacoesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Locações</a>
+            <ul class="collapse list-unstyled" id="locacoesSubMenu">
+                <li>
+                    <a id="" href=""><i class="fas fa-user-plus"></i>Cadastrar</a>
+                </li>
+                <li>
+                    <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
+                </li>
+            </ul>
+            <a href="#">Sobre</a>
+        </div>
 
-        <div class="container-fluid">
+        <main>
+            @yield('content')
+        </main>
+
+        <div class="container-fluid footer">
             <div class="row">
-                <div class="col-md-2 px-1 position-fixed" id="sidebar">
-                    <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-2">
-                        <a href="{{ route('inicio') }}" class="nav-link">Início</a>
-                        <a href="#usuariosSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Funcionário</a>
-                        <ul class="collapse list-unstyled" id="usuariosSubMenu">
-                            <li>
-                                <a id="" href="{{ route('user.create') }}"><i class="fas fa-user-plus"></i>Cadastrar</a>
-                            </li>
-                            <li>
-                                <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
-                            </li>
-                        </ul>
-                        <a href="#carrosSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Carros</a>
-                        <ul class="collapse list-unstyled" id="carrosSubMenu">
-                            <li>
-                                <a id="" href=""><i class="fas fa-user-plus"></i>Cadastrar</a>
-                            </li>
-                            <li>
-                                <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
-                            </li>
-                        </ul>
-                        <a href="#loacacoesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Locações</a>
-                        <ul class="collapse list-unstyled" id="loacacoesSubMenu">
-                            <li>
-                                <a id="" href=""><i class="fas fa-user-plus"></i>Cadastrar</a>
-                            </li>
-                            <li>
-                                <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
-                            </li>
-                        </ul>
-                        <a href="" class="nav-link">Sobre</a>
-                    </div>
+                <div class="col-md-2">
+                    <h3>LOGO</h3>
                 </div>
-                <div class="col-md-10 offset-2" id="main">
-                    <main class="py-4">
-                        @yield('content')
-                    </main>
+                <div class="col-md-8">
+                    <p>Locadora</p>
+                    <p>2021</p>
                 </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
+
+
+
     </div>
 </body>
 </html>

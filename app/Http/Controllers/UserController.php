@@ -99,4 +99,13 @@ class UserController extends Controller
         return redirect()->route('user.index');
 
     }
+
+    public function searchUser(Request $req) {
+
+        $findUser = User::find($req->txtUsuario);
+        return view('viewUser', ['user' => $findUser]);
+
+    }
+
+
 }

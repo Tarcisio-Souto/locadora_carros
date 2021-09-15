@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\RentsController;
 use App\Http\Controllers\UserController;
+//use App\Http\Controllers\Auth;
 use App\Models\Rents;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +19,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+
+    if (Auth::check()) {
+        return view('auth.login');
+    } else {
+        return redirect()->route('inicio');
+    }
+
+
 });
 
 
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('usuarios', UserController::class)->names('user')->parameters(['usuarios' => 'user']);
+    Route::get('pesquisar-usuario', [UserController::class, 'searchUser'])->name('user.viewUser');
+
 
     Route::resource('carros', CarsController::class)->names('car')->parameters(['carros' => 'car']);
     Route::get('locacoes/disponiveis', [CarsController::class, 'cars_available'])->name('car.cars_available');
