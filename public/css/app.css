@@ -48,6 +48,9 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  height:100%;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -63,6 +66,8 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+  height: 100%;
+
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10103,16 +10108,40 @@ h3 {
     width: 100%;
 }
 
+/* Fim Menu Superior */
 
-.footer {
-    bottom: 0;
-    margin: 0;
-    background-color: #013c6d;
-    text-align: center;
-    color: white;
+
+/* Início Rodapé (fixá-lo no fim e acompanhando o crescimento da página) */
+
+.conteudo {
+  position: relative;
+  top: 100px;
+  overflow-y: hidden;
+  max-width: 800px;
+  background-color: rgb(192, 192, 192);
+  padding: 20px;
+  border: 1px dotted #040505;
+  z-index: -1;
 }
 
-/* Fim Menu Superior */
+.geral {
+  min-height:100%;
+  position:relative;
+}
+
+.footer {
+  position:absolute;
+  bottom:0;
+  width:100% !important;
+  background-color: #444444;
+  text-align: center;
+  color: white;
+}
+
+
+/* Fim Rodapé  */
+
+
 
 
 /* Início Efeito de Sobreposição (menu) */
@@ -10160,4 +10189,23 @@ h3 {
 }
 
 
+/* Formulários */
 
+.sessoes {
+  background-color: #188870;
+  border: 1px solid #065745;
+  padding: 20px;
+}
+
+.sessoes input[type='text'],[type='password'], [type='email'] {
+  height: 25px;
+  width: 70%;
+  border-radius: 0;
+  padding: 3px;
+  font-size: 12px;
+}
+
+fieldset {
+  border: 1px solid black;
+
+}
