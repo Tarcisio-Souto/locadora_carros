@@ -30,37 +30,15 @@
 
             </form>
 
-
         </div>
 
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-
-        <fieldset class="teste">
-            <legend>Teste</legend>
-            <p>blablabla</p>
-            <p>blablabla</p>
-    
-            <p>blablabla</p>
-    
-            <p>blablabla</p>
-    
-            <p>blablabla</p>
-    
-        </fieldset>
-        
-
     </div>
-
-    <br><br><br><br>
-    <br><br><br><br>
-    <br><br><br><br>
-
     
-
-    <br><br><br><br>
-    <br><br><br><br>
-    <br><br><br><br>
+    <br><br><br><br><Br><br>
+        <br><br><br><br><Br><br>
+            <br><br><br><br><Br><br>
+                <br><br><br><br><Br><br>
+                    <br><br><br><br><Br><br>
+                        <br><br><br><br><Br><br>
 
 @endsection
