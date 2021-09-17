@@ -604,9 +604,11 @@ function closeNav() {
 /* Efeito escurecer menu */
 
 $('.openbtn').on('click', function() {
-    $('.overlay').fadeIn(1000);
+    $('.overlay').fadeIn(1000);    
 });
 
 $('.closebtn').on('click', function() {
     $('.overlay').fadeOut(1000);
 });
+
+
