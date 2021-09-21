@@ -24,6 +24,18 @@ class CreateAddressesTable extends Migration
             $table->string('zipcode');
             $table->string('country');
         });
+
+        DB::table('addresses')->insert(
+            array(
+                'street' => 'Rua Eurico Salles',                
+                'number' => '99',
+                'district' => 'Belo Bairro',
+                'reference' => 'Ao lado da igreja',
+                'state' => 'ES',
+                'zipcode' => '2900000',
+                'country' => 'Brasil'               
+            )
+        );
     }
 
     /**
