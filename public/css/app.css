@@ -9258,11 +9258,20 @@ a.text-dark:hover, a.text-dark:focus {
 
 /* Formulários */
 
+.form-login [type='password']{
+  width: 100%;
+}
+
+.form-login [type='email']{
+  width: 100%;
+}
+
 .sessoes {
   background-color: #188870;
   border: 1px solid #065745;
   padding: 20px;
 }
+
 
 .sessoes input[type='text'], [type='password'], [type='email'] {
   height: 25px;
