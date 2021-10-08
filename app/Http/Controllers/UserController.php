@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\User;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -40,36 +43,50 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+        $msgErros = [];
 
-        $address = new Address();
-        $address->street = $request->txtLogradouro;
-        $address->number = $request->txtNumero;
-        $address->district = $request->txtBairro;
-        $address->reference = $request->txtReferencia;
-        $address->state = $request->txtEstado;
-        $address->zipcode = $request->txtCep;
-        $address->country = $request->txtPais;
-        $address->save();
+        if (intval($request->txtIdade) < 18) {
+            $msg = ' A idade não pode ser menor do que 18';
+            array_push($msgErros, $msg);
+        }
 
-        # Obter o ID do último registro da tabela:
-        $fk_address = DB::getPdo()->lastInsertId();
+        if (count($msgErros) > 0) {
 
-        $user = new User();
-        $user->name = $request->txtNome;
-        $user->email = $request->txtEmail;
-        $user->password = Hash::make($request->txtSenha);
-        $user->tel_celular = $request->txtCelular;
-        $user->naturalidade = $request->txtNaturalidade;
-        $user->sexo = $request->txtSexo;
-        $user->cpf = $request->txtCpf;
-        $user->email = $request->txtEmail;
-        $user->rg = $request->txtRg;
-        $user->idade = $request->txtIdade;
-        $user->fk_endereco = $fk_address;
-        $user->save();
+            return Redirect::back()->withErrors([$msgErros])->withInput();
 
-        return redirect()->route('user.index');
+        } else {
 
+            $address = new Address();
+            $address->street = $request->txtLogradouro;
+            $address->number = $request->txtNumero;
+            $address->district = $request->txtBairro;
+            $address->reference = $request->txtReferencia;
+            $address->state = $request->txtEstado;
+            $address->zipcode = $request->txtCep;
+            $address->country = $request->txtPais;
+            $address->save();
+
+            # Obter o ID do último registro da tabela:
+            $fk_address = DB::getPdo()->lastInsertId();
+
+            $user = new User();
+            $user->name = $request->txtNome;
+            $user->email = $request->txtEmail;
+            $user->password = Hash::make($request->txtSenha);
+            $user->tel_celular = $request->txtCelular;
+            $user->naturalidade = $request->txtNaturalidade;
+            $user->sexo = $request->txtSexo;
+            $user->cpf = $request->txtCpf;
+            $user->email = $request->txtEmail;
+            $user->rg = $request->txtRg;
+            $user->idade = $request->txtIdade;
+            $user->fk_endereco = $fk_address;
+            $user->photo = $request->txtFoto;
+            $user->save();
+
+
+            return redirect()->route('user.index');
+        }
 
     }
 
@@ -110,7 +127,6 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('user.index');
-
     }
 
     /**
@@ -123,15 +139,12 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('user.index');
-
     }
 
-    public function searchUser(Request $req) {
+    public function searchUser(Request $req)
+    {
 
         $findUser = User::find($req->txtUsuario);
         return view('viewUser', ['user' => $findUser]);
-
     }
-
-
 }
