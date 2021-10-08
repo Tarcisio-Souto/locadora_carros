@@ -16,12 +16,11 @@ class AddMoreColumnsUser extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('fk_endereco');
             $table->string('tel_celular');
-            $table->string('naturalidade');
-            $table->char('sexo');
+            $table->string('naturalidade')->nullable();
+            $table->char('sexo')->nullable();
             $table->string('cpf');
             $table->string('rg');
             $table->string('idade');
-            $table->string('raca');
 
             $table->foreign('fk_endereco')->references('id')->on('addresses');
         });
