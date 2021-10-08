@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateAddressesTable extends Migration
@@ -19,7 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('street');
             $table->string('number');
             $table->string('district');
-            $table->text('reference');
+            $table->text('reference')->nullable();
             $table->string('state');
             $table->string('zipcode');
             $table->string('country');
@@ -27,13 +28,13 @@ class CreateAddressesTable extends Migration
 
         DB::table('addresses')->insert(
             array(
-                'street' => 'Rua Eurico Salles',                
+                'street' => 'Rua Eurico Salles',
                 'number' => '99',
                 'district' => 'Belo Bairro',
                 'reference' => 'Ao lado da igreja',
                 'state' => 'ES',
                 'zipcode' => '2900000',
-                'country' => 'Brasil'               
+                'country' => 'Brasil'
             )
         );
     }
