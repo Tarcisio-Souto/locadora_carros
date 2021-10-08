@@ -21,6 +21,7 @@ class AddMoreColumnsUser extends Migration
             $table->string('cpf');
             $table->string('rg');
             $table->string('idade');
+            $table->binary('photo')->nullable();
 
             $table->foreign('fk_endereco')->references('id')->on('addresses');
         });
@@ -42,6 +43,7 @@ class AddMoreColumnsUser extends Migration
             $table->dropColumn('rg');
             $table->dropColumn('idade');
             $table->dropColumn('raca');
+            $table->dropColumn('photo');
         });
     }
 }
