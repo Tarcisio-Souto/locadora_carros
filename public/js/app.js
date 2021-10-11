@@ -600,6 +600,26 @@ function closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
 }
 
+function verificaSenha() {
+
+  var txtSenha = document.getElementById('txtSenha').value;
+  var txtConfirmSenha = document.getElementById('txtConfirmSenha').value;
+  var checkKey = document.getElementById('checkKey');
+
+  
+  if (txtSenha == txtConfirmSenha) {
+      checkKey.style.color = 'green';
+  } else {
+      checkKey.style.color = 'red';
+  }
+
+
+}
+
+/* Máscaras */
+
+$("#cpf").mask("000.000.000-00");
+
 
 /* Efeito escurecer menu */
 

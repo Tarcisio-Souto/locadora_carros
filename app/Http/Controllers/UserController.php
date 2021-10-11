@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\User;
-use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Symfony\Component\Console\Input\Input;
+
 
 class UserController extends Controller
 {
@@ -42,19 +41,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $msgErros = [];
 
         if (intval($request->txtIdade) < 18) {
             $msg = ' A idade não pode ser menor do que 18';
             array_push($msgErros, $msg);
+        }        
+
+        if ($request->txtSenha != $request->txtConfirmSenha) {
+            $msg = 'As senhas não são iguais';
+            array_push($msgErros, $msg);
         }
+
 
         if (count($msgErros) > 0) {
 
             return Redirect::back()->withErrors([$msgErros])->withInput();
-
         } else {
+
+            $request->validate([
+                'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
+            ], ['image.image' => 'O arquivo selecionado não é uma imagem.',
+                 'image.mimes' => 'Extensões válidas: jpg, png, jpeg, gif ou svg',]);
 
             $address = new Address();
             $address->street = $request->txtLogradouro;
@@ -81,13 +90,20 @@ class UserController extends Controller
             $user->rg = $request->txtRg;
             $user->idade = $request->txtIdade;
             $user->fk_endereco = $fk_address;
-            $user->photo = $request->txtFoto;
+            
+            # Adicionando a imagem
+            if ($request->image != null) {
+                $image = $request->image->store('users');
+                $user->path_photo = $image;
+            } else {
+                $user->path_photo = "";
+            }                
+
             $user->save();
 
+            return redirect()->route('user.index');           
 
-            return redirect()->route('user.index');
         }
-
     }
 
     /**

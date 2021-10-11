@@ -23,7 +23,7 @@
             <p>Dados Pessoais</p>
         </span>
 
-        <form action="{{ route('user.store') }}" method="POST" enctype="multilpart/form-data">
+        <form action="{{ route('user.store') }}"  enctype="multipart/form-data" method="POST">
             @csrf
             <div class="sessoes">
                 <div class="row">
@@ -89,7 +89,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>CPF:</label>
-                            <input type="text" class="form-control" name="txtCpf" required value="{{ old('txtCpf') }}">
+                            <input type="text" class="form-control" id="cpf" name="txtCpf" required value="{{ old('txtCpf') }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -194,11 +194,18 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Senha:</label>
-                                    <input type="password" class="form-control" name="txtSenha" required>
+                                    <input type="password" class="form-control" id="txtSenha" name="txtSenha" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Confirmação de senha:</label>
-                                    <input type="password" class="form-control" name="txtConfirmSenha" required>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <input type="password" class="form-control" id="txtConfirmSenha" name="txtConfirmSenha" onkeyup="verificaSenha()" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <i class="fas fa-check-circle" id="checkKey"></i>
+                                        </div>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -214,7 +221,7 @@
                                 </div>-->
                                 <div class="form-group select_foto">
                                     <label for="exampleFormControlFile1">Carregue sua foto</label>
-                                    <input type="file" class="form-control-file" name="txtFoto" value="{{ old('txtFoto') }}">
+                                    <input type="file" class="form-control-file" name="image" id="image" value="{{ old('txtFoto') }}">
                                 </div>
                             </div>
                         </div>
@@ -234,9 +241,6 @@
 
     </div>
 
-    <br><br><br><br><Br><br>
-    <br><br><br><br><Br><br>
-    <br><br><br><br><Br><br>
     <br><br><br><br><Br><br>
     <br><br><br><br><Br><br>
     <br><br><br><br><Br><br>
