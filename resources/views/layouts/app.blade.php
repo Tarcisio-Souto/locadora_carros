@@ -92,7 +92,7 @@
                         <a href="{{ route('user.create') }}"><i class="fas fa-user-plus"></i>Cadastrar</a>
                     </li>
                     <li>
-                        <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
+                        <a href="{{ route('user.index') }}"><i class="fas fa-search"></i>Pesquisar</a>
                     </li>
                 </ul>
                 <a href="#carroSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Carros</a>

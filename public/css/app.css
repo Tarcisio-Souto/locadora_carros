@@ -9326,3 +9326,40 @@ a.text-dark:hover, a.text-dark:focus {
     top: 40px;
   }
 }
+
+.box-search-user {
+  padding: 30px 0;
+  background-color: #045292;
+}
+
+.inputSearch {
+  height: 50px !important;
+}
+
+.btnPesquisar {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#none nav {
+  position: relative;
+  text-align: center;
+}
+
+.lista-usuarios{
+  text-align: center;
+  max-width: 100%;
+  font-weight: bold;
+  font-size: 130%;
+  position: relative;
+  top: 15px;
+  margin-bottom: 60px;
+}
+
+table thead tr th{
+  text-align: center;
+}
+
+tbody {
+  text-align: center;
+}
