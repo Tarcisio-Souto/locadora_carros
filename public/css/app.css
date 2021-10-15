@@ -9363,3 +9363,7 @@ table thead tr th{
 tbody {
   text-align: center;
 }
+
+.photo-cad-user img {
+  border-radius: 50% !important;
+}
