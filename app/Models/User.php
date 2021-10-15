@@ -42,13 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setNameAttribute($value) {
+    public function addresses() {
 
-        if (strlen($value) < 7) {
-            echo 'Nome incorreto';
-        } else {
-            return $this->attributes['name'] = $value;
-        }
+        return $this->hasMany(Address::class, 'id', 'fk_endereco');
 
     }
 

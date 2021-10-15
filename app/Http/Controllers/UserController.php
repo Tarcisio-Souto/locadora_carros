@@ -119,7 +119,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('viewUser', ['user' => $user]);
+        $user = User::with(['addresses'])->find($user->id);
+        return view('viewUser', compact('user'));
+        //return view('viewUser', ['user' => $users]);
+        //dd($users->addresses[0]->street);
+
     }
 
     /**
