@@ -13,8 +13,7 @@
     <form action="{{ route('user.edit', ['user' => $user->id])}}" method="GET">
         <label>Nome: <input type="text" value="{{ $user->name }}" disabled> </label><br><br>
         <label>E-mail: <input type="email" value="{{ $user->email }}" disabled> </label><br><br>
-        <p>{{$user->photo}}</p>
-        <img src="data:image;base64,'{{$user->photo}}'"/>
+        <img src="{{ url("storage/{$user->path_photo}") }}" width="200px" />
         <input type="submit" value="Editar">
     </form>
 
