@@ -46,13 +46,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $msgErros = [];
 
         if (intval($request->txtIdade) < 18) {
             $msg = ' A idade não pode ser menor do que 18';
             array_push($msgErros, $msg);
-        }        
+        }
 
         if ($request->txtSenha != $request->txtConfirmSenha) {
             $msg = 'As senhas não são iguais';
@@ -95,18 +95,18 @@ class UserController extends Controller
             $user->rg = $request->txtRg;
             $user->idade = $request->txtIdade;
             $user->fk_endereco = $fk_address;
-            
+
             # Adicionando a imagem
             if ($request->image != null) {
-                $image = $request->image->store('users');
+                $image = $request->image->store('users', 'public');
                 $user->path_photo = $image;
             } else {
                 $user->path_photo = "";
-            }                
+            }
 
             $user->save();
 
-            return redirect()->route('user.index');           
+            return redirect()->route('user.index');
 
         }
     }
