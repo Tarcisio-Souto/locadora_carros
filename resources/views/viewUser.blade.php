@@ -2,13 +2,6 @@
 
 @section('content')
 
-    <!--
-    <form action="{{ route('user.edit', ['user' => $user->id])}}" method="GET">
-        <img src="{{ url("storage/{$user->path_photo}") }}" width="200px" />
-        <input type="submit" value="Editar">
-    </form>
-    -->
-
     <div class="container-fluid conteudo">
         <div class="row head_form">
             <div class="col-md-12">
@@ -30,7 +23,6 @@
         </span>
 
         <form action="{{ route('user.edit', ['user' => $user->id]) }}"  enctype="multipart/form-data" method="GET">
-            @csrf
             <div class="sessoes">
                 <div class="row">
                     <div class="col-md-6">
@@ -40,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label>E-mail:</label>
-                            <input type="email" class="form-control" name="txtEmail" 
+                            <input type="email" class="form-control" name="txtEmail"
                                 value="{{ $user->email }}" disabled>
                         </div>
                         <div class="form-group">
@@ -61,15 +53,15 @@
                             <div class="form-check">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <input class="form-check-input" type="radio" name="txtSexo" value="m"
-                                            {{ !empty(old('txtSexo')) ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="radio"
+                                            {{ $user->sexo == 'm' ? 'checked' : '' }} disabled>
                                         <label class="form-check-label" for="exampleRadios1">
                                             Masculino
                                         </label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input class="form-check-input" type="radio" name="txtSexo" value="f"
-                                            {{ !empty(old('txtSexo')) ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="radio"
+                                            {{ $user->sexo == 'f' ? 'checked' : '' }} disabled>
                                         <label class="form-check-label" for="exampleRadios2">
                                             Feminino
                                         </label>
@@ -130,34 +122,34 @@
                             <select name="txtEstado" class="form-control" disabled>
                                 <option selected value="{{ $user->addresses[0]->state }}">{{ $user->addresses[0]->state }}</option>
                                 <option>Selecione o estado</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
-                                <option value="EX">Estrangeiro</option>
+                                <option value="Acre">Acre</option>
+                                <option value="Alagoas">Alagoas</option>
+                                <option value="Amapá">Amapá</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Bahia">Bahia</option>
+                                <option value="Ceará">Ceará</option>
+                                <option value="Distrito Federal">Distrito Federal</option>
+                                <option value="Espírito Santo">Espírito Santo</option>
+                                <option value="Goiás">Goiás</option>
+                                <option value="Maranhão">Maranhão</option>
+                                <option value="Mato Grosso">Mato Grosso</option>
+                                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                <option value="Minas Gerais">Minas Gerais</option>
+                                <option value="Pará">Pará</option>
+                                <option value="Paraíba">Paraíba</option>
+                                <option value="Paraná">Paraná</option>
+                                <option value="Pernambuco">Pernambuco</option>
+                                <option value="Piauí">Piauí</option>
+                                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                <option value="Rondônia">Rondônia</option>
+                                <option value="Roraima">Roraima</option>
+                                <option value="Santa Catarina">Santa Catarina</option>
+                                <option value="São Paulo">São Paulo</option>
+                                <option value="Sergipe">Sergipe</option>
+                                <option value="Tocantins">Tocantins</option>
+                                <option value="Estrangeiro">Estrangeiro</option>
                             </select>
                         </div>
                     </div>
@@ -188,7 +180,7 @@
             <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6 btnConfirm">
-                    <button type="submit" class="btn btn-warning">Alterar</button>
+                    <button type="submit" class="btn btn-primary">Alterar</button>
                 </div>
             </div>
 

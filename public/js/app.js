@@ -606,7 +606,7 @@ function verificaSenha() {
   var txtConfirmSenha = document.getElementById('txtConfirmSenha').value;
   var checkKey = document.getElementById('checkKey');
 
-  
+
   if (txtSenha == txtConfirmSenha) {
       checkKey.style.color = 'green';
   } else {
@@ -616,6 +616,27 @@ function verificaSenha() {
 
 }
 
+
+$('#btnTrocaSenha1').on('click', function(){
+    $('#txtSenha').prop('disabled', false);
+    $('#txtConfirmSenha').prop('disabled', false);
+    $('#txtSenha').prop('required', true);
+    $('#txtConfirmSenha').prop('required', true);
+    $('#btnTrocaSenha1').css('display', 'none');
+    $('#btnTrocaSenha2').css('display', 'block');
+});
+
+$('#btnTrocaSenha2').on('click', function(){
+    $('#txtSenha').prop('disabled', true);
+    $('#txtConfirmSenha').prop('disabled', true);
+    $('#txtSenha').prop('required', false);
+    $('#txtConfirmSenha').prop('required', false);
+    $('#btnTrocaSenha2').css('display', 'none');
+    $('#btnTrocaSenha1').css('display', 'block');
+});
+
+
+
 /* Máscaras */
 
 $("#cpf").mask("000.000.000-00");
@@ -624,7 +645,7 @@ $("#cpf").mask("000.000.000-00");
 /* Efeito escurecer menu */
 
 $('.openbtn').on('click', function() {
-    $('.overlay').fadeIn(1000);    
+    $('.overlay').fadeIn(1000);
 });
 
 $('.closebtn').on('click', function() {
