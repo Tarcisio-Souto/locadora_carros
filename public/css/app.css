@@ -9317,7 +9317,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .col-foto{
   position: relative;
-  top: 70px;  
+  top: 107px;
 }
 
 @media screen and (max-width: 768px){
@@ -9366,4 +9366,13 @@ tbody {
 
 .photo-cad-user img {
   border-radius: 50% !important;
+  max-width: 200px !important;
+}
+
+#btnTrocaSenha1 {
+    display: block;
+}
+
+#btnTrocaSenha2 {
+    display: none;
 }
