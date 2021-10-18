@@ -228,6 +228,12 @@ class UserController extends Controller
     {
         //$user = DB::table('users')->where('id', $req->txtId)->get();
         $user = User::where('id', $req->txtId)->first();
-        return view('viewUser', compact('user'));
+
+        if ($user == null) {
+            return Redirect::back()->withErrors('Usuário não encontrado');
+        } else {
+            return view('viewUser', compact('user'));
+        }
+        
     }
 }

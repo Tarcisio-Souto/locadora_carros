@@ -9376,3 +9376,8 @@ tbody {
 #btnTrocaSenha2 {
     display: none;
 }
+
+.alert-danger p{
+  position: relative;
+  top: 10px;
+}
