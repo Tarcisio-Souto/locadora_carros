@@ -9,7 +9,7 @@
             <div class="col-md-8">
                 <form id="" action="{{ route('user.viewUser') }}" method="GET">
                     <div class="input-group">
-                        <input class="form-control inputSearch" id="txtId" type="text" placeholder="Insira o ID do usuário"
+                        <input class="form-control inputSearch" id="txtId" name="txtId" type="text" placeholder="Insira o ID do usuário"
                             aria-label="Search" style="border-right: none;" required>
                         <div class="input-group-append">
                             <div class="input-group-text" style="background-color: #FFF">

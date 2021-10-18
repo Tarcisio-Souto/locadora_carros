@@ -226,8 +226,8 @@ class UserController extends Controller
 
     public function searchUser(Request $req)
     {
-
-        $findUser = User::find($req->txtUsuario);
-        return view('viewUser', ['user' => $findUser]);
+        //$user = DB::table('users')->where('id', $req->txtId)->get();
+        $user = User::where('id', $req->txtId)->first();
+        return view('viewUser', compact('user'));
     }
 }

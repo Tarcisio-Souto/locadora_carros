@@ -47,7 +47,6 @@
                             <input type="text" class="form-control" name="txtNaturalidade"
                                 value="{{ $user->naturalidade }}" disabled>
                         </div>
-
                         <div class="form-group">
                             <label>Sexo:</label>
                             <div class="form-check">

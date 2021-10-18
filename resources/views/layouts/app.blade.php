@@ -22,11 +22,12 @@
     <!-- Font Awesome JS -->
     <script src="https://kit.fontawesome.com/3d7779fa7f.js" crossorigin="anonymous"></script>
 
+
 </head>
 <body>
     <div class="overlay"></div>
     <div class="geral">        
-        <div id="app">
+        <div id="app">            
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm menu-sup">
                 <div class="container">
                     <a class="navbar-brand logo-menu" href="{{ url('/inicio') }}">
@@ -69,9 +70,9 @@
                                         <a class="dropdown-item item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Sair') }}
                                         </a>
-
+                                        
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>

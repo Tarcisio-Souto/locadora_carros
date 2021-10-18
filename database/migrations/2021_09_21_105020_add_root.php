@@ -28,6 +28,7 @@ class AddRoot extends Migration
                 'cpf' => '99999999999',
                 'rg' => '3333333',
                 'idade' => '28',
+                'path_photo' => '',
                 'created_at' => '2021-09-21 11:09:00',
                 'updated_at' => '2021-09-21 11:09:00',
             )
