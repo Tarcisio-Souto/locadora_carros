@@ -32,7 +32,7 @@ class CreateAddressesTable extends Migration
                 'number' => '99',
                 'district' => 'Belo Bairro',
                 'reference' => 'Ao lado da igreja',
-                'state' => 'ES',
+                'state' => 'Espírito Santo',
                 'zipcode' => '2900000',
                 'country' => 'Brasil'
             )

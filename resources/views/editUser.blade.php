@@ -55,15 +55,15 @@
                             <div class="form-check">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <input class="form-check-input" type="radio"
-                                            {{ $user->sexo == 'm' ? 'checked' : '' }} >
+                                        <input class="form-check-input" type="radio" name="txtSexo" value="m"
+                                            {{ $user->sexo == 'm' ? 'checked' : '' || !empty(old('txtSexo')) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="exampleRadios1">
                                             Masculino
                                         </label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input class="form-check-input" type="radio"
-                                            {{ $user->sexo == 'f' ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="radio" name="txtSexo" value="f"
+                                            {{ $user->sexo == 'f' ? 'checked' : '' || !empty(old('txtSexo')) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="exampleRadios2">
                                             Feminino
                                         </label>
