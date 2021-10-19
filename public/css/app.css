@@ -9312,7 +9312,29 @@ a.text-dark:hover, a.text-dark:focus {
 
 .btnConfirm button{
   width: 100%;
+  height: 45px;  
+}
+
+.btnConfirmCars {
+  text-align: right;
+  margin-bottom: 70px;
+}
+
+.btnConfirmCars button{
+  width: 100%;
   height: 45px;
+  position: relative;
+  top: 30px;
+}
+
+
+@media screen and (max-width: 780px){
+
+  .btnConfirmCars button{
+    position: relative;
+    top: 40px;
+  }  
+
 }
 
 .col-foto{

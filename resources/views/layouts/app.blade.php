@@ -99,10 +99,10 @@
                 <a href="#carroSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Carros</a>
                 <ul class="collapse list-unstyled" id="carroSubMenu">
                     <li>
-                        <a id="" href=""><i class="fas fa-user-plus"></i>Cadastrar</a>
+                        <a href="{{ route('car.create') }}"><i class="fas fa-user-plus"></i>Cadastrar</a>
                     </li>
                     <li>
-                        <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
+                        <a href="{{ route('car.index') }}"><i class="fas fa-search"></i>Pesquisar</a>
                     </li>
                 </ul>
                 <a href="#locacoesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Locações</a>

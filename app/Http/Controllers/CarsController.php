@@ -37,10 +37,26 @@ class CarsController extends Controller
     public function store(Request $request)
     {
         $car = new Cars();
+
+        $request->validate([
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
+        ], ['image.image' => 'O arquivo selecionado não é uma imagem.',
+             'image.mimes' => 'Extensões válidas: jpg, png, jpeg, gif ou svg',]);
+
+             
         $car->brand = $request->txtMarca;
         $car->model = $request->txtModelo;
         $car->board = $request->txtPlaca;
         $car->year = $request->txtAno;
+
+        # Adicionando a imagem
+        if ($request->image != null) {
+            $image = $request->image->store('cars', 'public');
+            $car->path_photo = $image;
+        } else {
+            $car->path_photo = $car->path_photo;
+        }
+
         $car->save();
 
         return redirect()->route('car.index');

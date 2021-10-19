@@ -20,11 +20,16 @@ class CreateCarsTable extends Migration
             $table->string('model');
             $table->string('year');
             $table->string('board');
+            $table->string('path_photo1');
+            $table->string('path_photo2');
+            $table->string('path_photo3');
+            $table->string('path_photo4');
+            $table->string('path_photo5');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations
      *
      * @return void
      */
