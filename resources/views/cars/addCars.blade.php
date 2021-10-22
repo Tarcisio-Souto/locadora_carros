@@ -34,7 +34,7 @@
                             <label>Marca:</label>
                             <input type="text" class="form-control" name="txtMarca" required
                                 value="{{ old('txtMarca') }}">
-                        </div>                        
+                        </div>
                         <div class="form-group">
                             <label>Modelo:</label>
                             <input type="email" class="form-control" name="txtModelo" required
@@ -55,13 +55,13 @@
                                 <option>Selecione o ano</option>
                                 @for ($i = 1900; $i <= 2021; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor                                
+                                @endfor
                             </select>
 
 
-                        </div>                        
+                        </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <br>
 
@@ -76,13 +76,15 @@
                             <div class="col-md-12">
                                 <div class="form-group select_foto">
                                     <!--<label for="exampleFormControlFile1">Selecionas as imagens</label>
-                                    <input type="file" class="form-control-file" name="image" id="image" value="{{ old('txtFoto') }}">-->
+                                        <input type="file" class="form-control-file" name="image" id="image" value="{{ old('txtFoto') }}">-->
 
-                                    <label for="arquivo">Enviar arquivo</label>
-                                    <input type="file" name="arquivo" id="arquivo">
+                                    <label class="custom-file-upload">
+                                        <input type="file"/>
+                                        <i class="fas fa-upload"></i>
+                                    </label>
 
                                 </div>
-                            </div>                                       
+                            </div>
                         </div>
                     </div>
                 </div>

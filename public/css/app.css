@@ -9403,3 +9403,8 @@ tbody {
   position: relative;
   top: 10px;
 }
+
+
+.input[type="file"] {
+  display: none;
+}
