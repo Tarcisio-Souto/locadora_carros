@@ -234,6 +234,6 @@ class UserController extends Controller
         } else {
             return view('viewUser', compact('user'));
         }
-        
+
     }
 }

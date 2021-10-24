@@ -43,19 +43,53 @@ class CarsController extends Controller
         ], ['image.image' => 'O arquivo selecionado não é uma imagem.',
              'image.mimes' => 'Extensões válidas: jpg, png, jpeg, gif ou svg',]);
 
-             
+
         $car->brand = $request->txtMarca;
         $car->model = $request->txtModelo;
         $car->board = $request->txtPlaca;
         $car->year = $request->txtAno;
 
-        # Adicionando a imagem
-        if ($request->image != null) {
-            $image = $request->image->store('cars', 'public');
-            $car->path_photo = $image;
+        # Adicionando a imagem 1
+        if ($request->image1 != null) {
+            $image1 = $request->image1->store('cars', 'public');
+            $car->path_photo1 = $image1;
         } else {
-            $car->path_photo = $car->path_photo;
+            $car->path_photo1 = $car->path_photo1;
         }
+
+        # Adicionando a imagem 2
+        if ($request->image2 != null) {
+            $image2 = $request->image2->store('cars', 'public');
+            $car->path_photo2 = $image2;
+        } else {
+            $car->path_photo2 = $car->path_photo2;
+        }
+
+        # Adicionando a imagem 3
+        if ($request->image3 != null) {
+            $image3 = $request->image3->store('cars', 'public');
+            $car->path_photo3 = $image3;
+        } else {
+            $car->path_photo3 = $car->path_photo3;
+        }
+
+        # Adicionando a imagem 4
+        if ($request->image4 != null) {
+            $image4 = $request->image4->store('cars', 'public');
+            $car->path_photo4 = $image4;
+        } else {
+            $car->path_photo4 = $car->path_photo4;
+        }
+
+        # Adicionando a imagem 5
+        if ($request->image5 != null) {
+            $image5 = $request->image5->store('cars', 'public');
+            $car->path_photo5 = $image5;
+        } else {
+            $car->path_photo5 = $car->path_photo5;
+        }
+
+        $car->status = 0;
 
         $car->save();
 

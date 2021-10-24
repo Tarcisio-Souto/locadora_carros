@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label>Modelo:</label>
-                            <input type="email" class="form-control" name="txtModelo" required
+                            <input type="text" class="form-control" name="txtModelo" required
                                 value="{{ old('txtModelo') }}">
                         </div>
                     </div>
@@ -75,14 +75,20 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group select_foto">
-                                    <!--<label for="exampleFormControlFile1">Selecionas as imagens</label>
-                                        <input type="file" class="form-control-file" name="image" id="image" value="{{ old('txtFoto') }}">-->
-
-                                    <label class="custom-file-upload">
-                                        <input type="file"/>
-                                        <i class="fas fa-upload"></i>
-                                    </label>
-
+                                    <label for="image">Selecione a primeira imagem</label>
+                                    <input type="file" class="form-control-file" name="image1" id="image1" value="{{ old('image1') }}">
+                                    <hr>
+                                    <label for="image">Selecione a segunda imagem</label>
+                                    <input type="file" class="form-control-file" name="image2" id="image2" value="{{ old('image2') }}">
+                                    <hr>
+                                    <label for="image">Selecione a terceira imagem</label>
+                                    <input type="file" class="form-control-file" name="image3" id="image3" value="{{ old('image3') }}">
+                                    <hr>
+                                    <label for="image">Selecione a quarta imagem</label>
+                                    <input type="file" class="form-control-file" name="image4" id="image4" value="{{ old('image4') }}">
+                                    <hr>
+                                    <label for="image">Selecione a quinta imagem</label>
+                                    <input type="file" class="form-control-file" name="image5" id="image5" value="{{ old('image5') }}">
                                 </div>
                             </div>
                         </div>
