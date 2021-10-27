@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.listCar')
 
-@section('content')
+@section('content3')
 <div>
     <h1>Cadastrar Carro</h1><br>
 

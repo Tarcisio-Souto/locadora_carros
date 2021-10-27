@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cars;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CarsController extends Controller
@@ -156,8 +157,13 @@ class CarsController extends Controller
         $cars = Cars::where('status', '=', '0')->get();
         return view('cars.cars_available', compact('cars'));
 
-
     }
 
+    public function searchCars(Request $request) {
+
+        $cars = Cars::where('brand', 'like', '%'.$request->txtMarca.'%')->get();
+        return view('cars.listAllCars', compact('cars'));
+
+    }
 
 }
