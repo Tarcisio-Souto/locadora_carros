@@ -24,9 +24,13 @@
                                 <input type="submit" class="btnPesquisar" value="Pesquisar">
                             </div>
                         </div>
+                        <select name="txtStatus" class="form-control" required>
+                            <option value="todos">Todos</option>
+                            <option value="disponivel">Disponível</option>
+                            <option value="indisponivel">Indisponível</option>
+                        </select>
                     </div>
                 </form>
-            </div>
             <div class="col-md-2"></div>
         </div>
 
