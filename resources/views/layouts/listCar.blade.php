@@ -30,15 +30,17 @@
                     <div class="form-group">
                         <select name="txtMarca" class="form-control" required>
                             <option value="todos">Selecione a marca</option>
-                            <option value="disponivel">Disponível</option>
-                            <option value="indisponivel">Indisponível</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand['id'] }}">{{ $brand['brand'] }}</option>
+                            @endforeach                            
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="txtStatus" class="form-control" required>
-                            <option value="todos">Todos</option>
-                            <option value="disponivel">Disponível</option>
-                            <option value="indisponivel">Indisponível</option>
+                        <select name="txtModelo" class="form-control" required>
+                            <option value="todos">Selecione o modelo</option>
+                            @foreach ($models as $model)
+                                <option value="{{ $model['id'] }}">{{ $model['model'] }}</option>
+                            @endforeach                            
                         </select>
                     </div>
                 </form>

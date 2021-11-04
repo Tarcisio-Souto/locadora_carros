@@ -14,7 +14,8 @@ class ModelsController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Models::with('brands')->get();
+        return view('layouts.listCar', compact('cars'));
     }
 
     /**

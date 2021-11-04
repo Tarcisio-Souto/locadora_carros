@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brands;
 use App\Models\Cars;
+use App\Models\Models;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,8 +17,16 @@ class CarsController extends Controller
      */
     public function index()
     {
+
+        $brands = brands::all();
+        $models = Models::all();
+        return view('layouts.listCar', compact('brands', 'models'));
+
+
+        /*
         $cars = Cars::all();
         return view('cars.listAllCars', ['cars' => $cars]);
+        */
     }
 
     /**
