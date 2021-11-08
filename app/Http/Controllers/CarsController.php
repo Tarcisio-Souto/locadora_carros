@@ -20,8 +20,8 @@ class CarsController extends Controller
 
         $brands = brands::all();
         $models = Models::all();
-        return view('layouts.listCar', compact('brands', 'models'));
-
+        $cars = Cars::all();
+        return view('cars.listAllCars', compact('brands', 'models', 'cars'));
 
         /*
         $cars = Cars::all();
