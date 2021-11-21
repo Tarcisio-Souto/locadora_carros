@@ -45,29 +45,34 @@
         <br><br><br><br><br>
 
         @foreach ($cars as $car)
-            <form action="{{ route('car.show', ['car' => $car->id]) }}" method="GET">
-                <div class="row">
-                    <div class="col-md-6 photo_car_view">
-                        <img src="{{ url("storage/{$car->path_photo1}") }}" />            
-                    </div>
-                    <div class="col-md-6">
-                        <h3>Marca: <span>{{ $car->brand }}</span></h3>
-                        <h3>Modelo: <span>{{ $car->model }}</span></h3>
-                        <h3>Ano: <span>{{ $car->year }}</span></h3>
-                        <h3>Placa: <span>{{ $car->board }}</span></h3>
-                    </div>
+            <div class="row show_cars">
+                <div class="col-md-12">
+                    <form action="{{ route('car.show', ['car' => $car->id]) }}" method="GET">
+                        <div class="row">
+                            <div class="col-md-5 photo_car_view">
+                                <img src="{{ url("storage/{$car->path_photo1}") }}" />            
+                            </div>
+                            <div class="col-md-7 desc_car_view ">
+                                <p>Marca: <span>{{ $car->brand }}</span></p>
+                                <p>Modelo: <span>{{ $car->model }}</span></p>
+                                <p>Ano: <span>{{ $car->year }}</span></p>
+                                <p>Placa: <span>{{ $car->board }}</p>
+                            </div>
+                        </div>
+                        <input type="submit" class="btnVisualizar" value="Visualizar"><br><br>
+                    </form>
+                    <form action="{{ route('car.destroy', ['car' => $car->id]) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" class="btnDeletar" value="Deletar">
+                    </form>
                 </div>
-                <input type="submit" value="Visualizar"><br><br>
-            </form>
-            <form action="{{ route('car.destroy', ['car' => $car->id]) }}" method="post">
-                @csrf
-                @method('delete')
-                <input type="submit" value="Deletar">
-            </form>
+            </div>            
             <hr><br>
         @endforeach        
 
-
+    </div>
+    
         <br><br><br><br><br>
         <br><br><br><br><br>
         <br><br><br><br><br>

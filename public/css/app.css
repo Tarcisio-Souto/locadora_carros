@@ -9424,3 +9424,28 @@ tbody {
 .pesq_car {
   width: 100%;
 }
+
+.show_cars {
+  margin-bottom: 20px !important;
+}
+
+.photo_car_view img{
+  width: 100%;
+}
+
+.desc_car_view p{
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.btnVisualizar {
+  position: absolute;
+  right: 90px;
+  top: 200px;  
+}
+
+.btnDeletar {
+  position: absolute;
+  right: 10px;
+  top: 200px;
+}
