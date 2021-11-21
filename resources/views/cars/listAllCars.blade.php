@@ -44,13 +44,19 @@
 
         <br><br><br><br><br>
 
-
         @foreach ($cars as $car)
             <form action="{{ route('car.show', ['car' => $car->id]) }}" method="GET">
-                <label>Marca: <input type="text" value="{{ $car->brand }}" disabled> </label><br><br>
-                <label>Modelo: <input type="text" value="{{ $car->model }}" disabled> </label><br><br>
-                <label>Placa: <input type="text" value="{{ $car->board }}" disabled> </label><br><br>
-                <label>Ano: <input type="text" value="{{ $car->year }}" disabled> </label><br><br>
+                <div class="row">
+                    <div class="col-md-6 photo_car_view">
+                        <img src="{{ url("storage/{$car->path_photo1}") }}" />            
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Marca: <span>{{ $car->brand }}</span></h3>
+                        <h3>Modelo: <span>{{ $car->model }}</span></h3>
+                        <h3>Ano: <span>{{ $car->year }}</span></h3>
+                        <h3>Placa: <span>{{ $car->board }}</span></h3>
+                    </div>
+                </div>
                 <input type="submit" value="Visualizar"><br><br>
             </form>
             <form action="{{ route('car.destroy', ['car' => $car->id]) }}" method="post">

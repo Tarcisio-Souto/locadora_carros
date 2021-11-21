@@ -31,22 +31,23 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Marca:</label>
-                            <input type="text" class="form-control" name="txtMarca" required
-                                value="{{ old('txtMarca') }}">
-                        </div>
-                        <div class="form-group">
                             <label>Modelo:</label>
-                            <input type="text" class="form-control" name="txtModelo" required
-                                value="{{ old('txtModelo') }}">
+                            <select name="txtModelo" class="form-control" required>
+                                <option value="todos">Selecione o modelo</option>
+                                @foreach ($models as $model)
+                                    <option value="{{ $model['id'] }}">{{ $model['model'] }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Placa:</label>
                             <input type="text" class="form-control" name="txtPlaca" required
                                 value="{{ old('txtPlaca') }}">
                         </div>
+                    </div>
+                    <div class="col-md-6">
+
                         <div class="form-group">
                             <label>Ano:</label>
                             <!--<input type="text" class="form-control" name="txtAno" value="{{ old('txtAno') }}">-->

@@ -13,6 +13,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <img src="{{ url("storage/{$user->path_photo}") }}" />
+
             </div>
             <div class="col-md-1"></div>
         </div>

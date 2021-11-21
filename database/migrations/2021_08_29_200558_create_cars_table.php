@@ -18,11 +18,11 @@ class CreateCarsTable extends Migration
             $table->timestamps();
             $table->string('year');
             $table->string('board');
-            $table->string('path_photo1');
-            $table->string('path_photo2');
-            $table->string('path_photo3');
-            $table->string('path_photo4');
-            $table->string('path_photo5');
+            $table->string('path_photo1')->nullable();
+            $table->string('path_photo2')->nullable();
+            $table->string('path_photo3')->nullable();
+            $table->string('path_photo4')->nullable();
+            $table->string('path_photo5')->nullable();
         });
     }
 

@@ -19,13 +19,16 @@ class CarsController extends Controller
     public function index()
     {
 
+        $brands = brands::all();
+        $models = Models::all();
+
         $cars = DB::table('cars')
             ->join('models', 'cars.fk_model', '=', 'models.id')
             ->join('brands', 'brands.id', '=', 'models.fk_brand')
             ->select('*', 'cars.year')
             ->get();        
         
-        return view('cars.listAllCars', compact('cars'));
+        return view('cars.listAllCars', compact('cars', 'brands', 'models'));
 
     }
 
@@ -36,7 +39,10 @@ class CarsController extends Controller
      */
     public function create()
     {
-        return view('cars.addCars');
+
+        $models = Models::select('*')->orderBy('model', 'asc')->get();
+
+        return view('cars.addCars', compact('models'));
     }
 
     /**
@@ -54,9 +60,7 @@ class CarsController extends Controller
         ], ['image.image' => 'O arquivo selecionado não é uma imagem.',
              'image.mimes' => 'Extensões válidas: jpg, png, jpeg, gif ou svg',]);
 
-
-        $car->brand = $request->txtMarca;
-        $car->model = $request->txtModelo;
+        $car->fk_model = $request->txtModelo;
         $car->board = $request->txtPlaca;
         $car->year = $request->txtAno;
 
