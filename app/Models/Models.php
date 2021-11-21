@@ -9,9 +9,9 @@ class Models extends Model
 {
     use HasFactory;
 
-    public function teste() {
+    public function Brands() {
 
-        return $this->hasOne(\App\Models\brands::class, 'id', 'fk_brand');
+        return $this->belongsTo(\App\Models\brands::class, 'id', 'fk_brand');
 
     }
 

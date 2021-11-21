@@ -14,8 +14,8 @@ class AddMoreColumnsCars extends Migration
     public function up()
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table->unsignedBigInteger('fk_brand');
-            $table->foreign('fk_brand')->references('id')->on('brands');
+            $table->unsignedBigInteger('fk_model');
+            $table->foreign('fk_model')->references('id')->on('models');
         });
     }
 
@@ -27,7 +27,7 @@ class AddMoreColumnsCars extends Migration
     public function down()
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table->dropColumn('fk_brand');
+            $table->dropColumn('fk_model');
         });
     }
 }

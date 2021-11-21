@@ -9,10 +9,10 @@ class Cars extends Model
 {
     use HasFactory;
 
-    public function brands() {
+    public function Models() {
 
-        return $this->hasMany(\App\Models\brands::class, 'id', 'fk_brand');
+        return $this->hasMany(\App\Models\Models::class, 'id', 'fk_model');
 
     }
-
+   
 }

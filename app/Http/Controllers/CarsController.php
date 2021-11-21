@@ -7,6 +7,7 @@ use App\Models\Cars;
 use App\Models\Models;
 use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
 
 class CarsController extends Controller
 {
@@ -18,15 +19,14 @@ class CarsController extends Controller
     public function index()
     {
 
-        $brands = brands::all();
-        $models = Models::all();
-        $cars = Cars::all();
-        return view('cars.listAllCars', compact('brands', 'models', 'cars'));
+        $cars = DB::table('cars')
+            ->join('models', 'cars.fk_model', '=', 'models.id')
+            ->join('brands', 'brands.id', '=', 'models.fk_brand')
+            ->select('*', 'cars.year')
+            ->get();        
+        
+        return view('cars.listAllCars', compact('cars'));
 
-        /*
-        $cars = Cars::all();
-        return view('cars.listAllCars', ['cars' => $cars]);
-        */
     }
 
     /**
