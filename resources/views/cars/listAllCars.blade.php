@@ -41,7 +41,6 @@
             </div>
         </div>
 
-
         <br><br><br><br><br>
 
         @foreach ($cars as $car)
@@ -49,7 +48,7 @@
                 <div class="col-md-12">
                     <form action="{{ route('car.show', ['car' => $car->id]) }}" method="GET">
                         <div class="row">
-                            <div class="col-md-5 photo_car_view">
+                            <div class="col-md-3 photo_car_view">
                                 <img src="{{ url("storage/{$car->path_photo1}") }}" />            
                             </div>
                             <div class="col-md-7 desc_car_view ">
