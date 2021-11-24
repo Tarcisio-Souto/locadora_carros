@@ -43,32 +43,57 @@
 
         <br><br><br><br><br>
 
-        @foreach ($cars as $car)
-            <div class="row show_cars">
-                <div class="col-md-12">
-                    <form action="{{ route('car.show', ['car' => $car->id]) }}" method="GET">
-                        <div class="row">
-                            <div class="col-md-3 photo_car_view">
-                                <img src="{{ url("storage/{$car->path_photo1}") }}" />            
-                            </div>
-                            <div class="col-md-7 desc_car_view ">
-                                <p>Marca: <span>{{ $car->brand }}</span></p>
-                                <p>Modelo: <span>{{ $car->model }}</span></p>
-                                <p>Ano: <span>{{ $car->year }}</span></p>
-                                <p>Placa: <span>{{ $car->board }}</p>
-                            </div>
-                        </div>
-                        <input type="submit" class="btnVisualizar" value="Visualizar"><br><br>
-                    </form>
-                    <form action="{{ route('car.destroy', ['car' => $car->id]) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" class="btnDeletar" value="Deletar">
-                    </form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-secondary">
+                                    <th></th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Ano</th>
+                                    <th scope="col">Placa</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            @foreach ($cars as $car)
+                                <tbody>
+                                    <tr class="table-light">
+                                        <td><img src="{{ url("storage/{$car->path_photo1}") }}" style="width:150px;" /></td>
+                                        <td><span>{{ $car->brand }}</span></td>
+                                        <td><span>{{ $car->model }}</span></td>
+                                        <td><span>{{ $car->year }}</span></td>
+                                        <td><span class='status_tag'>{{ $car->status == 0 ? 'Disponível' : 'Indisponível' }}</span></td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
-            </div>            
-            <hr><br>
-        @endforeach        
+            </div>
+        </div>
 
     </div>
     
