@@ -20,9 +20,7 @@ class UserController extends Controller
     public function index()
     {
 
-        return view('listAllUsers', [
-            'users' => DB::table('users')->paginate(2)
-        ]);
+        return view('listAllUsers', ['users' => DB::table('users')->paginate(2)]);
 
         #$users = User::all();
         #return view('listAllUsers', ['users' => $users]);

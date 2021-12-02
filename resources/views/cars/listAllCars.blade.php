@@ -67,19 +67,19 @@
                                         <td><span>{{ $car->year }}</span></td>
                                         <td><span class='status_tag'>{{ $car->status == 0 ? 'Disponível' : 'Indisponível' }}</span></td>
                                         <td style="width: 20%;">
-                                            <a href="#" class="table-link">
+                                            <a href="{{ route('car.show', ['car' => $car->id]) }}" class="table-link">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
                                                     <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                                 </span>
                                             </a>
-                                            <a href="#" class="table-link">
+                                            <a href="{{ route('car.edit', ['car' => $car->id]) }}" class="table-link">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
                                                     <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                                 </span>
                                             </a>
-                                            <a href="#" class="table-link danger">
+                                            <a href="{{ route('car.destroy_car', ['car' => $car->id]) }}" class="table-link danger">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
                                                     <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>

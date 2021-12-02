@@ -25,8 +25,9 @@ class CarsController extends Controller
         $cars = DB::table('cars')
             ->join('models', 'cars.fk_model', '=', 'models.id')
             ->join('brands', 'brands.id', '=', 'models.fk_brand')
-            ->select('*', 'cars.year')
+            ->select('*', 'cars.id', 'cars.year')
             ->get();        
+       
         
         return view('cars.listAllCars', compact('cars', 'brands', 'models'));
 
@@ -159,12 +160,20 @@ class CarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
+    /*
     public function destroy(Cars $car)
-    {
+    {        
         $car->delete();
         return redirect()->route('car.index');
     }
+    */
 
+    public function destroy_car(Cars $car) {
+
+        $car->delete();
+        return redirect()->route('car.index');
+
+    }
 
     public function cars_available() {
 

@@ -365,11 +365,3 @@ table tbody tr td span {
     top: 33px;
     font-weight: bold;
 }
-
-.fa-trash-o {
-    background-color: rgba(255, 0, 0, 0.63);
-}
-
-.table-link .danger {
-    background-color: rgba(255, 0, 0, 0.63);
-}
