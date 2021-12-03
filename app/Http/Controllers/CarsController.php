@@ -121,9 +121,6 @@ class CarsController extends Controller
     public function show(Cars $car)
     {
 
-        #$brand = brands::all();
-        #$models = Models::all();
-
         $cars = DB::table('cars')
             ->join('models', 'cars.fk_model', '=', 'models.id')
             ->join('brands', 'brands.id', '=', 'models.fk_brand')
@@ -143,7 +140,16 @@ class CarsController extends Controller
      */
     public function edit(Cars $car)
     {
-        return view('cars.editCar', ['car' => $car]);
+
+        $cars = DB::table('cars')
+        ->join('models', 'cars.fk_model', '=', 'models.id')
+        ->join('brands', 'brands.id', '=', 'models.fk_brand')
+        ->select('*', 'cars.id', 'cars.year')
+        ->where('cars.id', '=', $car['id'])
+        ->get();     
+            
+        return view('cars.editCar', compact('cars'));
+
     }
 
     /**

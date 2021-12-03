@@ -5,7 +5,7 @@
     <div class="container conteudo">
 
         @foreach ($cars as $car)
-            <form action="" method="GET">
+            <form action="{{ route('car.edit', ['car' => $car->id]) }}" method="GET">
                 <div class="row box-view-car">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <label>Marca:</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $car->brand }}" disabled }}>
+                                        value="{{ $car->brand }}" disabled >
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     <label>Modelo:</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $car->model }}" disabled }}>
+                                        value="{{ $car->model }}" disabled>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     <label>Placa:</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $car->board }}" disabled }}>
+                                        value="{{ $car->board }}" disabled>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label>Ano:</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $car->year }}" disabled }}>
+                                        value="{{ $car->year }}" disabled>
                                 </div>
                             </div>
                         </div>
