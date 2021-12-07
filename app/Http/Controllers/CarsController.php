@@ -139,16 +139,21 @@ class CarsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Cars $car)
-    {
+    {        
+
+        $brands = brands::all();
+        $models = Models::all();
 
         $cars = DB::table('cars')
         ->join('models', 'cars.fk_model', '=', 'models.id')
         ->join('brands', 'brands.id', '=', 'models.fk_brand')
-        ->select('*', 'cars.id', 'cars.year')
+        ->select('*', 'cars.*')
         ->where('cars.id', '=', $car['id'])
         ->get();     
-            
-        return view('cars.editCar', compact('cars'));
+        
+        #dd($cars);
+
+        return view('cars.editCar', compact('cars', 'brands', 'models'));
 
     }
 
@@ -161,11 +166,58 @@ class CarsController extends Controller
      */
     public function update(Request $request, Cars $car)
     {
-        $car->brand = $request->txtMarca;
-        $car->model = $request->txtModelo;
+        
+        $car->fk_model = $request->txtModelo;
         $car->board = $request->txtPlaca;
         $car->year = $request->txtAno;
+
+        # Adicionando a imagem 1
+        if ($request->image1 != null) {
+            $image1 = $request->image1->store('cars', 'public');
+            unlink("storage/{$car->path_photo1}");
+            $car->path_photo1 = $image1;
+        } else {
+            $car->path_photo1 = $car->path_photo1;
+        }
+
+        # Adicionando a imagem 2
+        if ($request->image2 != null) {
+            $image2 = $request->image2->store('cars', 'public');
+            unlink("storage/{$car->path_photo2}");
+            $car->path_photo2 = $image2;
+        } else {
+            $car->path_photo2 = $car->path_photo2;
+        }
+
+        # Adicionando a imagem 3
+        if ($request->image3 != null) {
+            $image3 = $request->image3->store('cars', 'public');
+            unlink("storage/{$car->path_photo3}");
+            $car->path_photo3 = $image3;
+        } else {
+            $car->path_photo3 = $car->path_photo3;
+        }
+
+        # Adicionando a imagem 4
+        if ($request->image4 != null) {
+            $image4 = $request->image4->store('cars', 'public');
+            unlink("storage/{$car->path_photo4}");
+            $car->path_photo4 = $image4;
+        } else {
+            $car->path_photo4 = $car->path_photo4;
+        }
+
+        # Adicionando a imagem 5
+        if ($request->image5 != null) {
+            $image5 = $request->image5->store('cars', 'public');
+            unlink("storage/{$car->path_photo5}");
+            $car->path_photo5 = $image5;
+        } else {
+            $car->path_photo5 = $car->path_photo5;
+        }
+
         $car->save();
+        
 
         return redirect()->route('car.index');
 
