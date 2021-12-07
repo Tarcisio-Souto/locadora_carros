@@ -109,10 +109,10 @@
                 <a href="#locacoesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-tie"></i>Locações</a>
                 <ul class="collapse list-unstyled" id="locacoesSubMenu">
                     <li>
-                        <a id="" href=""><i class="fas fa-user-plus"></i>Cadastrar</a>
+                        <a href="{{ route('rent.index') }}"><i class="fas fa-user-plus"></i>Cadastrar</a>
                     </li>
                     <li>
-                        <a id="" href=""><i class="fas fa-search"></i>Pesquisar</a>
+                        <a href="{{ route('rent.index') }}"><i class="fas fa-search"></i>Pesquisar</a>
                     </li>
                 </ul>
                 <a href="#">Sobre</a>

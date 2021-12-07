@@ -63,8 +63,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/locacoes/update/{rent}', [RentsController::class, 'update'])->name('rent.update');
 
-    Route::delete('/locacoes/deletar/{rent}', [RentsController::class, 'destroy'])->name('rent.destroy');
-
+    Route::get('/locacoes/deletar/{rent}', [RentsController::class, 'destroy'])->name('rent.destroy');
 
     Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 

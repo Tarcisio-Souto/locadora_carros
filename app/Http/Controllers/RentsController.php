@@ -6,6 +6,7 @@ use App\Models\Rents;
 use App\Models\User;
 use App\Models\Cars;
 use Illuminate\Http\Request;
+use DB;
 
 class RentsController extends Controller
 {
@@ -15,9 +16,14 @@ class RentsController extends Controller
 
         // Listando todas as locações:
 
-        $rents = Rents::with(['carro', 'usuario'])->get();
-        return view('rents.listAllRents', compact('rents'));
+        $rents = DB::table('rents')
+        ->join('cars', 'cars.id', '=', 'rents.fk_car')
+        ->join('users', 'users.id', '=', 'rents.fk_user')
+        ->join('models', 'models.id', '=', 'cars.fk_model')
+        ->select('*', 'cars.*', 'rents.*')
+        ->get();
 
+        return view('rents.listAllRents', compact('rents'));
 
         //return view('rents.seachUser', compact('rents'));
     }
