@@ -1,33 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Locação</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Locação</h1><br><br>
+@section('content')
+    
+    <div class="container conteudo">
+            <h1>Locação</h1>
 
-    <label>Usuário: {{ $user->name }}</label><br><br>
+            <label>Usuário: {{ $user->name }}</label><br><br>
 
-    <form action="{{ route('rent.store') }}" method="POST">
-        @csrf
-        <input type="hidden" name="txtIdUsuario" value="{{ $user->id }}">
-        <select name="txtCarro">
-            <option value="" selected>Selecione o carro</option>
+            <form action="{{ route('rent.store') }}" method="POST">
+                @csrf                
+                <input type="hidden" name="txtIdUsuario" value="{{ $user->id }}">
 
-            @foreach ($cars as $car)
-                <option value="{{ $car->id }}">{{ $car->brand. " - " .$car->model. " - " .$car->year }}</option>
-            @endforeach
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Selecione o carro</label>
+                    <select multiple class="form-control" name="txtCarro" id="exampleFormControlSelect2">
+                        @foreach ($cars as $car)
+                            <option value="{{ $car->id }}">{{ $car->brand. " - " .$car->model. " - " .$car->year }}</option>
+                         @endforeach
+                    </select>
+                </div><br><br>                
 
-        </select><br><br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Data da Devolução</label>
+                    <input type="email" class="form-control" id="" aria-describedby="" placeholder="Informe a data de devolução">
+                    <!--<small id="" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
 
-        <label>Data da devolução: <input type="date" name="txtDataDevolucao"></label><br><br>
-        <label>Custo da locação: </label><input type="text" name="txtPreco"><br><br>
-        <input type="submit" value="Registrar">
-    </form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Custo da Locação</label>
+                    <input type="email" class="form-control" name="txtPreco" id="" aria-describedby="" placeholder="Informe o custo da devolução">
+                    <!--<small id="" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+                <input type="submit" value="Registrar">
+            </form>
+    </div>
 
-</body>
-</html>
+@endsection
+

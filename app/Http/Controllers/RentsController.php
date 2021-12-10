@@ -38,7 +38,17 @@ class RentsController extends Controller
 
     public function create(User $user) {
 
-        $cars = Cars::where('status', '=', '0')->get();
+        #$cars = Cars::where('status', '=', '0')->get();
+
+        $cars = DB::table('cars')
+        ->join('models', 'models.id', 'cars.fk_model')
+        ->join('brands', 'brands.id', 'models.fk_brand')
+        ->select('*', 'cars.year')
+        ->where('cars.status', '=', '0')
+        ->get();
+
+        #dd($cars);
+
         return view('rents.addRent', ['user' => $user, 'cars' => $cars]);
 
     }

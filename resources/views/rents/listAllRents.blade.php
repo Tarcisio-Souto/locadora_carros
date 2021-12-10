@@ -4,8 +4,8 @@
 
     <div class="container conteudo">
         <div class="row box-search-car">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         @foreach ($errors->all() as $error)
@@ -16,6 +16,7 @@
                 @endif
                 <form id="" action="{{ route('rent.searchUser') }}" method="POST">
                     @csrf
+                    <label>Nova locação: </label>
                     <div class="input-group">
                         <input class="form-control inputSearch" id="txtIdUsuario" name="txtIdUsuario" type="text"
                             placeholder="Pesquise o usuário pelo ID" aria-label="Search" style="border-right: none;"
@@ -28,11 +29,10 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-2"></div>
         </div>
 
         <br><br><br><br><br>
-
 
         <div class="row">
             <div class="col-md-12">
